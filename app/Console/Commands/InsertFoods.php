@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Food;
+use App\FoodType;
 use Illuminate\Console\Command;
 
 class InsertFoods extends Command
@@ -11,7 +13,7 @@ class InsertFoods extends Command
      *
      * @var string
      */
-    protected $signature = 'db:insert_foods';
+    protected $signature = 'db:insert_foods {filePath}';
 
     /**
      * The console command description.
@@ -28,6 +30,7 @@ class InsertFoods extends Command
     public function __construct()
     {
         parent::__construct();
+
     }
 
     /**
@@ -37,7 +40,25 @@ class InsertFoods extends Command
      */
     public function handle()
     {
+        $this->line('insert foods start');
 
-        $this->line('hello world');
+        $filePath = $this->argument('filePath');
+        $fileContent = file($filePath);
+
+        //dd($fileContent);
+
+        for ($i = 1 ; $i < sizeof($fileContent) ; $i++) {
+            $values = explode(',', $fileContent[$i]);
+            Food::create([
+                'name' => $values[1],
+                'price' => $values[2],
+                'cal' => $values[4],
+                'picture_url' => $values[5]
+            ]);
+        }
+
+        $this->line('insert foods complete');
     }
 }
+
+
