@@ -18,7 +18,7 @@ class CreateFoodsTable extends Migration
 
             $table->string('name', 100);
             $table->integer('price')->unsigned();
-            $table->integer('cal')->unsigned();
+            $table->integer('cal')->unsigned()->nullable();
             $table->integer('food_type_id')->unsigned();
             $table->integer('store_id')->unsigned();
 
