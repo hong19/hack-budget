@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Console\Commands;
 
 use App\Food;
-use App\FoodType;
+use App\Store;
 use Illuminate\Console\Command;
 
 class InsertFoods extends Command
@@ -47,13 +46,32 @@ class InsertFoods extends Command
 
         //dd($fileContent);
 
-        for ($i = 1 ; $i < sizeof($fileContent) ; $i++) {
+        for ($i = 2; $i < sizeof($fileContent) ; $i++) {
             $values = explode(',', $fileContent[$i]);
+            $store = Store::where('store_name', '=', $values[0])->firstOrFail();
+
+            switch ($values[3]) {
+                case '主食':
+                    $foodType = '1';
+                    break;
+                case '麵包':
+                    $foodType = '2';
+                    break;
+                case '飲料':
+                    $foodType = '3';
+                    break;
+                default:
+                    $foodType = '1';
+                    break;
+            }
+
             Food::create([
                 'name' => $values[1],
                 'price' => $values[2],
                 'cal' => $values[4],
-                'picture_url' => $values[5]
+                'picture_url' => $values[5],
+                'store_id' => $store->id,
+                'food_type_id' => $foodType
             ]);
         }
 
