@@ -83,4 +83,9 @@ class FoodController extends Controller
     {
         //
     }
+
+    public function getCandidate(Request $request)
+    {
+        return 'heelo';
+    }
 }
