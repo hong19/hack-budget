@@ -17,9 +17,12 @@ class CreateStoresTable extends Migration
             $table->timestamps();
 
             $table->string('store_name', 100);
+
             $table->string('address', 240)->nullable();
+            $table->string('phone', 32)->nullable();
             $table->float('longitude')->nullable();
             $table->float('latitude')->nullable();
+
 
         });
     }
