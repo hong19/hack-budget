@@ -46,9 +46,8 @@ class InsertStores extends Command
         //dd($fileContent);
         for ($i = 1 ; $i < sizeof($fileContent) ; $i++) {
             $values = explode(',', $fileContent[$i]);
-
             Store::create([
-                'name' => $values[0],
+                'store_name' => $values[0],
                 'phone' => $values[2],
                 'address' => $values[3]
             ]);
