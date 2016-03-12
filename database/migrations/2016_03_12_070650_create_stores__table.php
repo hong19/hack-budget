@@ -18,6 +18,7 @@ class CreateStoresTable extends Migration
 
             $table->string('store_name', 100);
             $table->string('address', 240);
+            $table->string('phone', 32);
             $table->float('longitude');
             $table->float('latitude');
 
