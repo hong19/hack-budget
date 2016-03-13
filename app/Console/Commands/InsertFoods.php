@@ -65,9 +65,12 @@ class InsertFoods extends Command
                     break;
             }
 
+            $price = str_replace('$', '', $values[2]);
+            $this->line($price);
+
             Food::create([
                 'name' => $values[1],
-                'price' => $values[2],
+                'price' => $price,
                 'cal' => $values[4],
                 'picture_url' => $values[5],
                 'store_id' => $store->id,
