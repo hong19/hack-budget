@@ -51,7 +51,7 @@ class ShareFoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('share-food.create');
     }
 
     /**
