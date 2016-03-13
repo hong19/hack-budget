@@ -16,7 +16,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        return 'food index';
     }
 
     /**
@@ -87,11 +87,24 @@ class FoodController extends Controller
 
     public function getCandidate(Request $request)
     {
-        $stapleAry = $this->getCandidateByType($request['total_budget'], 1);
 
-        $snackAry = $this->getCandidateByType($request['total_budget'], 2);
+        if ($request['staple_enable']) {
+            $stapleAry = $this->getCandidateByType($request['total_budget'], 1);
+        } else {
+            $stapleAry = $this->getCandidateByType($request['staple_budget'], 1);
+        }
 
-        $drinkAry = $this->getCandidateByType($request['total_budget'], 3);
+        if ($request['snack_enable']) {
+            $snackAry = $this->getCandidateByType($request['snack_budget'], 2);
+        } else {
+            $snackAry = $this->getCandidateByType($request['total_budget'], 2);
+        }
+
+        if ($request['drink_enable']) {
+            $drinkAry = $this->getCandidateByType($request['drink_budget'], 3);
+        } else {
+            $drinkAry = $this->getCandidateByType($request['total_budget'], 3);
+        }
 
         $results = [
             'staple' => $stapleAry,
