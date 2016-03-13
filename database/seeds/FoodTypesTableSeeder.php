@@ -31,6 +31,11 @@ class FoodTypesTableSeeder extends Seeder
             'id' => 3,
             'food_type_name' => 'drink'
         ]);
+
+        FoodType::create([
+            'id' => 4,
+            'food_type_name' => 'share'
+        ]);
     }
 
 }
