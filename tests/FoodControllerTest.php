@@ -34,6 +34,4 @@ class FoodControllerTest extends TestCase
 
         //dd($response->content());
     }
-
-
 }

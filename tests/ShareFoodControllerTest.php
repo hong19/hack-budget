@@ -1,5 +1,6 @@
 <?php
 
+use App\ShareFood;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -19,7 +20,17 @@ class ShareFoodControllerTest extends TestCase
 
         /*assert*/
         $this->assertEquals(200, $response->status());
+    }
 
-        dd($response->content());
+    public function test_many_to_many()
+    {
+        $shareFood = ShareFood::find(1);
+
+        $shareFood->foods()->attach(16);
+
+
+        dd($shareFood->foods);
+
+
     }
 }
