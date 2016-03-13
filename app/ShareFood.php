@@ -15,4 +15,9 @@ class ShareFood extends Model
         'current_person',
         'address'
     ];
+
+    public function foods()
+    {
+        return $this->belongsToMany('App\Food');
+    }
 }

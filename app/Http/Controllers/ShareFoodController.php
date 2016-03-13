@@ -31,7 +31,6 @@ class ShareFoodController extends Controller
             ]);
         }
 
-        dd($results);   
         return json_encode($results, JSON_UNESCAPED_UNICODE);
     }
 
