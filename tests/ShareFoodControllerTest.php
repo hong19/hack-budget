@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ShareFoodControllerTest extends TestCase
 {
+    use DatabaseTransactions;
 
     public function test_api_index_all_share_foods()
     {
@@ -27,10 +28,6 @@ class ShareFoodControllerTest extends TestCase
         $shareFood = ShareFood::find(1);
 
         $shareFood->foods()->attach(16);
-
-
-        dd($shareFood->foods);
-
 
     }
 }
