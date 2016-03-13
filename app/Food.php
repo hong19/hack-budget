@@ -27,4 +27,9 @@ class Food extends Model
     }
 
 
+    public function shareFoods()
+    {
+        $this->belongsToMany('App\ShareFood');
+    }
+
 }
