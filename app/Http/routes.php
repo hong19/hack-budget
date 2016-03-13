@@ -36,3 +36,7 @@ Route::get('/food/candidate', 'FoodController@getCandidate');
 Route::get('/food', 'FoodController@index');
 
 Route::get('/share-food', 'ShareFoodController@index');
+
+Route::get('/share-food/create', 'ShareFoodController@create');
+
+Route::post('/share-food', 'ShareFoodController@store');
