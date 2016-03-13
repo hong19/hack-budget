@@ -89,9 +89,9 @@ class FoodController extends Controller
     {
 
         if ($request['staple_enable']) {
-            $stapleAry = $this->getCandidateByType($request['total_budget'], 1);
-        } else {
             $stapleAry = $this->getCandidateByType($request['staple_budget'], 1);
+        } else {
+            $stapleAry = $this->getCandidateByType($request['total_budget'], 1);
         }
 
         if ($request['snack_enable']) {
