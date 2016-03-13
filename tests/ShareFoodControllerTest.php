@@ -21,13 +21,15 @@ class ShareFoodControllerTest extends TestCase
 
         /*assert*/
         $this->assertEquals(200, $response->status());
+        //dd($response->content());
     }
 
     public function test_many_to_many()
     {
         $shareFood = ShareFood::find(1);
 
-        $shareFood->foods()->attach(16);
+        //$shareFood->foods()->attach([10,109,68]);
+        //dd($shareFood->foods);
 
     }
 }
