@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ShareFoodControllerTest extends TestCase
 {
+    use DatabaseTransactions;
 
     public function test_api_index_all_share_foods()
     {
@@ -20,17 +21,15 @@ class ShareFoodControllerTest extends TestCase
 
         /*assert*/
         $this->assertEquals(200, $response->status());
+        //dd($response->content());
     }
 
     public function test_many_to_many()
     {
         $shareFood = ShareFood::find(1);
 
-        $shareFood->foods()->attach(16);
-
-
-        dd($shareFood->foods);
-
+        //$shareFood->foods()->attach([10,109,68]);
+        //dd($shareFood->foods);
 
     }
 }

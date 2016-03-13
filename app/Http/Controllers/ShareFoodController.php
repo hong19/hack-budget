@@ -20,6 +20,16 @@ class ShareFoodController extends Controller
 
         $results = [];
         foreach ($shareFoods as $shareFood) {
+            $foods = $shareFood->foods;
+            $foodAry = [];
+            //var_dump($foods);
+            foreach ($foods as $food) {
+                array_push($foodAry, [
+                    'name' => $food->name,
+                    'cal' => $food->cal
+                ]);
+            }
+
             array_push($results, [
                 'share_food_id' => $shareFood->id,
                 'user_name' => $shareFood->user_name,
@@ -27,7 +37,7 @@ class ShareFoodController extends Controller
                 'max_person' => $shareFood->max_person,
                 'current_person' => $shareFood->current_person,
                 'address' => $shareFood->address,
-                'food_list' => array()
+                'food_list' => $foodAry
             ]);
         }
 
