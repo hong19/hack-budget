@@ -99,7 +99,7 @@ class FoodController extends Controller
             'drink' => $drinkAry
         ];
 
-        return $results;
+        return json_encode($results, JSON_UNESCAPED_UNICODE);
     }
 
     /**
@@ -108,15 +108,15 @@ class FoodController extends Controller
      */
     protected function getCandidateByType($budget, $foodType)
     {
-        $staples = Food::where('price', '<=', $budget)
+        $foods = Food::where('price', '<=', $budget)
             ->where('price', '>', 0)
             ->where('food_type_id', '=', $foodType)
             ->get();
 
-        $stapleAry = [];
+        $foodAry = [];
         /** @var Food $staple */
-        foreach ($staples as $staple) {
-            array_push($stapleAry, [
+        foreach ($foods as $staple) {
+            array_push($foodAry, [
                 'name' => $staple->name,
                 'price' => $staple->price,
                 'cal' => $staple->cal,
@@ -124,6 +124,6 @@ class FoodController extends Controller
             ]);
         }
 
-        return $stapleAry;
+        return $foodAry;
     }
 }
