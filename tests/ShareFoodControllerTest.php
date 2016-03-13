@@ -20,6 +20,6 @@ class ShareFoodControllerTest extends TestCase
         /*assert*/
         $this->assertEquals(200, $response->status());
 
-        //dd($response->content());
+        dd($response->content());
     }
 }

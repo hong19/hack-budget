@@ -34,3 +34,5 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('/food/candidate', 'FoodController@getCandidate');
 
 Route::get('/food', 'FoodController@index');
+
+Route::get('/share-food', 'ShareFoodController@index');
